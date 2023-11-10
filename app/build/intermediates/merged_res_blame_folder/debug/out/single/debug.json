@@ -1,0 +1,74 @@
+[
+    {
+        "merged": "com.google.mlkit.codelab.translate.app-merged_res-16:/drawable_ic_launcher_background.xml.flat",
+        "source": "com.google.mlkit.codelab.translate.app-main-18:/drawable/ic_launcher_background.xml"
+    },
+    {
+        "merged": "com.google.mlkit.codelab.translate.app-merged_res-16:/mipmap-mdpi_ic_launcher.png.flat",
+        "source": "com.google.mlkit.codelab.translate.app-main-18:/mipmap-mdpi/ic_launcher.png"
+    },
+    {
+        "merged": "com.google.mlkit.codelab.translate.app-merged_res-16:/mipmap-xxhdpi_ic_launcher_round.png.flat",
+        "source": "com.google.mlkit.codelab.translate.app-main-18:/mipmap-xxhdpi/ic_launcher_round.png"
+    },
+    {
+        "merged": "com.google.mlkit.codelab.translate.app-merged_res-16:/layout_main_fragment.xml.flat",
+        "source": "com.google.mlkit.codelab.translate.app-main-18:/layout/main_fragment.xml"
+    },
+    {
+        "merged": "com.google.mlkit.codelab.translate.app-merged_res-16:/drawable-anydpi-v24_ic_launcher_foreground.xml.flat",
+        "source": "com.google.mlkit.codelab.translate.app-pngs-11:/drawable-anydpi-v24/ic_launcher_foreground.xml"
+    },
+    {
+        "merged": "com.google.mlkit.codelab.translate.app-merged_res-16:/drawable_greyscale_regular_3x.png.flat",
+        "source": "com.google.mlkit.codelab.translate.app-main-18:/drawable/greyscale_regular_3x.png"
+    },
+    {
+        "merged": "com.google.mlkit.codelab.translate.app-merged_res-16:/mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "com.google.mlkit.codelab.translate.app-main-18:/mipmap-anydpi-v26/ic_launcher.xml"
+    },
+    {
+        "merged": "com.google.mlkit.codelab.translate.app-merged_res-16:/mipmap-xxxhdpi_ic_launcher_round.png.flat",
+        "source": "com.google.mlkit.codelab.translate.app-main-18:/mipmap-xxxhdpi/ic_launcher_round.png"
+    },
+    {
+        "merged": "com.google.mlkit.codelab.translate.app-merged_res-16:/mipmap-xxhdpi_ic_launcher.png.flat",
+        "source": "com.google.mlkit.codelab.translate.app-main-18:/mipmap-xxhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "com.google.mlkit.codelab.translate.app-merged_res-16:/mipmap-xhdpi_ic_launcher.png.flat",
+        "source": "com.google.mlkit.codelab.translate.app-main-18:/mipmap-xhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "com.google.mlkit.codelab.translate.app-merged_res-16:/mipmap-hdpi_ic_launcher_round.png.flat",
+        "source": "com.google.mlkit.codelab.translate.app-main-18:/mipmap-hdpi/ic_launcher_round.png"
+    },
+    {
+        "merged": "com.google.mlkit.codelab.translate.app-merged_res-16:/mipmap-hdpi_ic_launcher.png.flat",
+        "source": "com.google.mlkit.codelab.translate.app-main-18:/mipmap-hdpi/ic_launcher.png"
+    },
+    {
+        "merged": "com.google.mlkit.codelab.translate.app-merged_res-16:/mipmap-mdpi_ic_launcher_round.png.flat",
+        "source": "com.google.mlkit.codelab.translate.app-main-18:/mipmap-mdpi/ic_launcher_round.png"
+    },
+    {
+        "merged": "com.google.mlkit.codelab.translate.app-merged_res-16:/mipmap-xhdpi_ic_launcher_round.png.flat",
+        "source": "com.google.mlkit.codelab.translate.app-main-18:/mipmap-xhdpi/ic_launcher_round.png"
+    },
+    {
+        "merged": "com.google.mlkit.codelab.translate.app-merged_res-16:/font_pt_sans.ttf.flat",
+        "source": "com.google.mlkit.codelab.translate.app-main-18:/font/pt_sans.ttf"
+    },
+    {
+        "merged": "com.google.mlkit.codelab.translate.app-merged_res-16:/mipmap-xxxhdpi_ic_launcher.png.flat",
+        "source": "com.google.mlkit.codelab.translate.app-main-18:/mipmap-xxxhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "com.google.mlkit.codelab.translate.app-merged_res-16:/mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "com.google.mlkit.codelab.translate.app-main-18:/mipmap-anydpi-v26/ic_launcher_round.xml"
+    },
+    {
+        "merged": "com.google.mlkit.codelab.translate.app-merged_res-16:/layout_main_activity.xml.flat",
+        "source": "com.google.mlkit.codelab.translate.app-main-18:/layout/main_activity.xml"
+    }
+]
