@@ -27,6 +27,7 @@ import androidx.lifecycle.Transformations
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.android.gms.tasks.Task
 import com.google.android.gms.tasks.Tasks
+import com.google.android.gms.vision.text.TextRecognizer
 import com.google.mlkit.codelab.translate.util.Language
 import com.google.mlkit.codelab.translate.util.ResultOrError
 import com.google.mlkit.codelab.translate.util.SmoothedMutableLiveData
@@ -44,7 +45,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     private val languageIdentifier = LanguageIdentification.getClient()
 
     val targetLang = MutableLiveData<Language>()
-    val sourceText = SmoothedMutableLiveData<String>(SMOOTHING_DURATION)
+    var sourceText = SmoothedMutableLiveData<String>(SMOOTHING_DURATION)
 
     // We set desired crop percentages to avoid having to analyze the whole image from the live
     // camera feed. However, we are not guaranteed what aspect ratio we will get from the camera, so
@@ -52,7 +53,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     // the actual aspect ratio of images.
     val imageCropPercentages = MutableLiveData<Pair<Int, Int>>()
         .apply { value = Pair(DESIRED_HEIGHT_CROP_PERCENT, DESIRED_WIDTH_CROP_PERCENT) }
-    val translatedText = MediatorLiveData<ResultOrError>()
+    var translatedText = MediatorLiveData<ResultOrError>()
     private val translating = MutableLiveData<Boolean>()
     val modelDownloading = SmoothedMutableLiveData<Boolean>(SMOOTHING_DURATION)
 
@@ -93,10 +94,6 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     }
 
     private fun translate(): Task<String> {
-        // TODO Take the source language value, target language value, and the source text and
-        //  perform the translation.
-        //  If the chosen target language model has not been downloaded to the device yet,
-        //  call downloadModelIfNeeded() and then proceed with the translation.
         val text = sourceText.value
         val source = sourceLang.value
         val target = targetLang.value
@@ -152,9 +149,9 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
                 }
             }
         // Start translation if any of the following change: detected text, source lang, target lang.
-        translatedText.addSource(sourceText) { translate().addOnCompleteListener(processTranslation) }
-        translatedText.addSource(sourceLang) { translate().addOnCompleteListener(processTranslation) }
-        translatedText.addSource(targetLang) { translate().addOnCompleteListener(processTranslation) }
+        translatedText.addSource(sourceText) {translate().addOnCompleteListener(processTranslation) }
+        translatedText.addSource(sourceLang) {translate().addOnCompleteListener(processTranslation) }
+        translatedText.addSource(targetLang) {translate().addOnCompleteListener(processTranslation) }
     }
 
     companion object {
