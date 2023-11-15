@@ -61,8 +61,8 @@
 44-->C:\Users\praya\Downloads\codelab-mlkit-android-master\codelab-mlkit-android-master\translate\starter\app\src\main\AndroidManifest.xml:30:9-36:20
 45            android:name="com.google.mlkit.codelab.translate.MainActivity"
 45-->C:\Users\praya\Downloads\codelab-mlkit-android-master\codelab-mlkit-android-master\translate\starter\app\src\main\AndroidManifest.xml:30:19-47
-46            android:exported="false"
-46-->C:\Users\praya\Downloads\codelab-mlkit-android-master\codelab-mlkit-android-master\translate\starter\app\src\main\AndroidManifest.xml:30:85-109
+46            android:exported="true"
+46-->C:\Users\praya\Downloads\codelab-mlkit-android-master\codelab-mlkit-android-master\translate\starter\app\src\main\AndroidManifest.xml:30:85-108
 47            android:screenOrientation="portrait" >
 47-->C:\Users\praya\Downloads\codelab-mlkit-android-master\codelab-mlkit-android-master\translate\starter\app\src\main\AndroidManifest.xml:30:48-84
 48            <intent-filter>

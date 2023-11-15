@@ -127,6 +127,7 @@ class MainFragment : Fragment() {
             requestPermissions(REQUIRED_PERMISSIONS, REQUEST_CODE_PERMISSIONS)
         }
 
+        /// Create the Dropdown Menu of language
         // Get available language list and set up the target language spinner
         // with default selections.
         val adapter = ArrayAdapter(
@@ -134,6 +135,8 @@ class MainFragment : Fragment() {
             android.R.layout.simple_spinner_dropdown_item, viewModel.availableLanguages
         )
 
+        /// Sets the target language upon startup by referencing the position of the language in the dropdown list.
+        /// It is set to English by default.
         targetLangSelector.adapter = adapter
         targetLangSelector.setSelection(adapter.getPosition(Language("en")))
         targetLangSelector.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
@@ -149,8 +152,10 @@ class MainFragment : Fragment() {
             override fun onNothingSelected(parent: AdapterView<*>) {}
         }
 
+        /// Observes the outputs of the viewModel, which are the source language and the translated text.
         viewModel.sourceLang.observe(viewLifecycleOwner, Observer { srcLang.text = it.displayName })
         viewModel.translatedText.observe(viewLifecycleOwner, Observer { resultOrError ->
+            /// Check for Errors
             resultOrError?.let {
                 if (it.error != null) {
                     translatedText.error = resultOrError.error?.localizedMessage
@@ -159,6 +164,8 @@ class MainFragment : Fragment() {
                 }
             }
         })
+        /// "Model is Downloading..." Logic.
+        /// If a model is downloading, show the text and progress wheel. If not, don't show these elements.
         viewModel.modelDownloading.observe(viewLifecycleOwner, Observer { isDownloading ->
             progressBar.visibility = if (isDownloading) {
                 View.VISIBLE
@@ -168,6 +175,7 @@ class MainFragment : Fragment() {
             progressText.visibility = progressBar.visibility
         })
 
+        /// Applies the overlay to the screen
         overlay.apply {
             setZOrderOnTop(true)
             holder.setFormat(PixelFormat.TRANSPARENT)
@@ -191,14 +199,8 @@ class MainFragment : Fragment() {
         }
     }
 
-//    @Composable
-//    private fun viewTranslation(){
-//        Text(
-//            text = translatedText.text
-//        )
-//    }
 
-
+    /// Initializes the Camera using CameraX
     /** Initialize CameraX, and prepare to bind the camera use cases  */
     private fun setUpCamera() {
         val cameraProviderFuture = ProcessCameraProvider.getInstance(requireContext())
@@ -248,6 +250,7 @@ class MainFragment : Fragment() {
                     )
                 )
             }
+        /// Sets the output of the image analyzer to the input for the language identifier.
         viewModel.sourceText.observe(viewLifecycleOwner, Observer { srcText.text = it })
         viewModel.imageCropPercentages.observe(viewLifecycleOwner,
             Observer { drawOverlay(overlay.holder, it.first, it.second) })
@@ -270,15 +273,19 @@ class MainFragment : Fragment() {
         }
     }
 
+    /// Draws the overlay on the camera view
     private fun drawOverlay(
         holder: SurfaceHolder,
         heightCropPercent: Int,
         widthCropPercent: Int
     ) {
+        /// Creates a Canvas
         val canvas = holder.lockCanvas()
         val bgPaint = Paint().apply {
             alpha = 140
         }
+
+        /// Defines Rectangle Variables
         canvas.drawPaint(bgPaint)
         val rectPaint = Paint()
         rectPaint.xfermode = PorterDuffXfermode(PorterDuff.Mode.CLEAR)
@@ -286,18 +293,19 @@ class MainFragment : Fragment() {
         rectPaint.color = Color.WHITE
         val outlinePaint = Paint()
         outlinePaint.style = Paint.Style.STROKE
-        outlinePaint.color = Color.WHITE
-        outlinePaint.strokeWidth = 4f
+        outlinePaint.color = Color.LTGRAY
+        outlinePaint.strokeWidth = 8f
         val surfaceWidth = holder.surfaceFrame.width()
         val surfaceHeight = holder.surfaceFrame.height()
 
-        val cornerRadius = 25f
+        val cornerRadius = 20f
         // Set rect centered in frame
         val rectTop = surfaceHeight * heightCropPercent / 2 / 100f
         val rectLeft = surfaceWidth * widthCropPercent / 2 / 100f
         val rectRight = surfaceWidth * (1 - widthCropPercent / 2 / 100f)
         val rectBottom = surfaceHeight * (1 - heightCropPercent / 2 / 100f)
         val rect = RectF(rectLeft, rectTop, rectRight, rectBottom)
+        /// Draws a Rectangle on the screen
         canvas.drawRoundRect(
             rect, cornerRadius, cornerRadius, rectPaint
         )
@@ -305,14 +313,16 @@ class MainFragment : Fragment() {
             rect, cornerRadius, cornerRadius, outlinePaint
         )
         val textPaint = Paint()
-        textPaint.color = Color.WHITE
-        textPaint.textSize = 50F
+        textPaint.color = Color.GREEN
+        textPaint.textSize = 40F
 
+        ///Defines text variables
         val overlayText = getString(R.string.overlay_help)
         val textBounds = Rect()
         textPaint.getTextBounds(overlayText, 0, overlayText.length, textBounds)
         val textX = (surfaceWidth - textBounds.width()) / 2f
         val textY = rectBottom + textBounds.height() + 15f // put text below rect and 15f padding
+        ///Draws text on the screen
         canvas.drawText(getString(R.string.overlay_help), textX, textY, textPaint)
         holder.unlockCanvasAndPost(canvas)
     }
@@ -328,6 +338,7 @@ class MainFragment : Fragment() {
      *  @param height - preview height
      *  @return suitable aspect ratio
      */
+    /// Helper function that assists with getting aspect ratios
     private fun aspectRatio(width: Int, height: Int): Int {
         val previewRatio = ln(max(width, height).toDouble() / min(width, height))
         if (abs(previewRatio - ln(RATIO_4_3_VALUE))
@@ -338,6 +349,7 @@ class MainFragment : Fragment() {
         return AspectRatio.RATIO_16_9
     }
 
+    /// Gets camera permission from the user and updates permissions accordingly.
     /**
      * Process result from permission request dialog box, has the request
      * been granted? If yes, start Camera. Otherwise display a toast

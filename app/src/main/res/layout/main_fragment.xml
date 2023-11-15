@@ -28,17 +28,18 @@
         android:id="@+id/viewfinder"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/middle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/middle"
         app:layout_constraintTop_toTopOf="parent" />
+
     <SurfaceView
         android:id="@+id/overlay"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintStart_toStartOf="@id/viewfinder"
-        app:layout_constraintEnd_toEndOf="@id/viewfinder"
         app:layout_constraintBottom_toBottomOf="@id/viewfinder"
+        app:layout_constraintEnd_toEndOf="@id/viewfinder"
+        app:layout_constraintStart_toStartOf="@id/viewfinder"
         app:layout_constraintTop_toTopOf="@id/viewfinder" />
 
     <androidx.constraintlayout.widget.Guideline
@@ -51,16 +52,19 @@
     <TextView
         android:id="@+id/srcLang"
         style="@style/SrcLangText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="130dp"
+        android:layout_height="24dp"
         android:layout_marginStart="20dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="4dp"
+        android:gravity="center"
         app:layout_constraintBottom_toTopOf="@+id/srcTextScrollView"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/middle"
+        app:layout_constraintTop_toBottomOf="@+id/viewfinder"
+        app:layout_constraintVertical_bias="0.5"
         tools:text="source lang" />
 
     <ScrollView
@@ -69,6 +73,7 @@
         android:layout_height="100dp"
         android:layout_marginBottom="4dp"
         android:fillViewport="true"
+        android:gravity="center_vertical"
         android:scrollbars="vertical"
         app:layout_constraintBottom_toTopOf="@+id/divider"
         app:layout_constraintEnd_toEndOf="parent"
@@ -99,11 +104,19 @@
 
     <Spinner
         android:id="@+id/targetLangSelector"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_width="130dp"
+        android:layout_height="24dp"
         android:layout_marginStart="20dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="4dp"
+        android:gravity="center"
+        app:layout_constraintBottom_toTopOf="@id/progressBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/divider" />
+        app:layout_constraintTop_toBottomOf="@id/divider"
+        app:layout_constraintVertical_bias="0.5" />
 
     <ScrollView
         android:id="@+id/translatedTextScrollView"
@@ -111,6 +124,7 @@
         android:layout_height="100dp"
         android:layout_marginBottom="4dp"
         android:fillViewport="true"
+        android:gravity="center_vertical"
         android:scrollbars="vertical"
         app:layout_constraintBottom_toTopOf="@+id/divider2"
         app:layout_constraintEnd_toEndOf="parent"
@@ -139,6 +153,7 @@
         android:background="?android:attr/listDivider"
         app:layout_constraintBottom_toTopOf="@id/imageView"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/translatedTextScrollView" />
 
@@ -161,22 +176,37 @@
     <ProgressBar
         android:id="@+id/progressBar"
         style="?android:attr/progressBarStyle"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="4dp"
+        android:gravity="center"
         android:visibility="invisible"
-        app:layout_constraintStart_toEndOf="@+id/targetLangSelector"
-        app:layout_constraintTop_toTopOf="@id/targetLangSelector"
-        app:layout_constraintBottom_toBottomOf="@id/targetLangSelector" />
+        app:layout_constraintBottom_toTopOf="@id/progressText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/targetLangSelector"
+        app:layout_constraintVertical_bias="0.5" />
 
     <TextView
         android:id="@+id/progressText"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:text="@string/downloading_model_files"
+        android:layout_width="180dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="4dp"
+        app:layout_constraintBottom_toTopOf="@id/divider2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/progressBar"
-        app:layout_constraintBottom_toBottomOf="@id/progressBar"
-        android:gravity="center_vertical"
-        app:layout_constraintTop_toTopOf="@id/progressBar" />
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/progressBar"
+        app:layout_constraintVertical_bias="0.5"
+        android:gravity="center"
+        android:text="@string/downloading_model_files"
+        app:layout_constraintBottom_toBottomOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

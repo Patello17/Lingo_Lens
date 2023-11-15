@@ -43,7 +43,7 @@
         android:theme="@style/AppTheme" >
         <activity
             android:name="com.google.mlkit.codelab.translate.MainActivity"
-            android:exported="false"
+            android:exported="true"
             android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

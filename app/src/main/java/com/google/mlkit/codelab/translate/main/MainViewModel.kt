@@ -41,9 +41,12 @@ import com.google.mlkit.codelab.translate.main.MainFragment.Companion.DESIRED_WI
 
 class MainViewModel(application: Application) : AndroidViewModel(application) {
 
+    /// Create an instance of the Language Identification Model
+    /// The line below had some issues, so I commented it out. The app works fine without explicitly defining the options.
     //private val languageIdentifier = LanguageIdentification.getClient(TextRecognizerOptions.DEFAULT_OPTIONS)
     private val languageIdentifier = LanguageIdentification.getClient()
 
+    ///Define target and source language variables. They are mutable because the user is free to change them.
     val targetLang = MutableLiveData<Language>()
     var sourceText = SmoothedMutableLiveData<String>(SMOOTHING_DURATION)
 
@@ -75,9 +78,9 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
             }
         }
 
+    /// Uses the Language Identification Model to identify the language of the input text.
+    /// Sets the variable sourceLang to the result
     val sourceLang = Transformations.switchMap(sourceText) { text ->
-        // TODO  Call the language identification method and assigns the result if it is not
-        //  undefined (“und”)
         val result = MutableLiveData<Language>()
         languageIdentifier.identifyLanguage(text)
             .addOnSuccessListener { languageCode ->

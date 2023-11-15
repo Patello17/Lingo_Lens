@@ -139,7 +139,7 @@ ADDED from C:\Users\praya\Downloads\codelab-mlkit-android-master\codelab-mlkit-a
 	android:screenOrientation
 		ADDED from C:\Users\praya\Downloads\codelab-mlkit-android-master\codelab-mlkit-android-master\translate\starter\app\src\main\AndroidManifest.xml:30:48-84
 	android:exported
-		ADDED from C:\Users\praya\Downloads\codelab-mlkit-android-master\codelab-mlkit-android-master\translate\starter\app\src\main\AndroidManifest.xml:30:85-109
+		ADDED from C:\Users\praya\Downloads\codelab-mlkit-android-master\codelab-mlkit-android-master\translate\starter\app\src\main\AndroidManifest.xml:30:85-108
 	android:name
 		ADDED from C:\Users\praya\Downloads\codelab-mlkit-android-master\codelab-mlkit-android-master\translate\starter\app\src\main\AndroidManifest.xml:30:19-47
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
